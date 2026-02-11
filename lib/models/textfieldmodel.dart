@@ -5,6 +5,7 @@ class CustomTextField extends StatefulWidget {
   final String hintText;
   final IconData? suffixIcon;
   final bool isPassword;
+
   final TextEditingController? controller;
   final String? helperText;
   const CustomTextField({
