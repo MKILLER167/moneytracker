@@ -5,11 +5,12 @@ class CustomTextField extends StatefulWidget {
   final String hintText;
   final IconData? suffixIcon;
   final bool isPassword;
-
+  final String? Function(String?)? validator;
   final TextEditingController? controller;
   final String? helperText;
   const CustomTextField({
     super.key,
+    this.validator,
     required this.labelText,
     required this.hintText,
     this.suffixIcon,
@@ -34,7 +35,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       controller: widget.controller,
       obscureText: obscure,
       onTapOutside: (_) => FocusScope.of(context).unfocus(),
@@ -65,6 +66,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
               )
             : (widget.suffixIcon != null ? Icon(widget.suffixIcon) : null),
       ),
+
+      validator: widget.validator,
     );
   }
 }
