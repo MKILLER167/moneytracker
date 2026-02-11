@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:moneytracker/models/textfieldmodel.dart';
 
 class loginpage extends StatelessWidget {
   loginpage({super.key});
-  final TextEditingController usernameController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +10,6 @@ class loginpage extends StatelessWidget {
     final height = mediaquery.height;
     final width = mediaquery.width;
     final iconSize = height * 0.1;
-    final buttonHeight = height * 0.06;
-    final buttonWidth = width * 0.9;
     final borderRadius = BorderRadius.circular(height * 0.01);
     return Scaffold(
       body: Padding(
@@ -34,43 +31,22 @@ class loginpage extends StatelessWidget {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: height * 0.06),
-                TextFormField(
-                  onTapOutside: (event) {
-                    FocusScope.of(context).unfocus();
-                  },
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(
-                      horizontal: width * 0.01,
-                      vertical: height * 0.02,
-                    ),
-                    labelText: 'Email',
-                    labelStyle: TextStyle(color: Colors.green),
-                    suffixIcon: Icon(Icons.email),
-                    hintText: 'Enter your Email',
-
-                    border: OutlineInputBorder(
-                      borderRadius: borderRadius,
-                      borderSide: BorderSide(color: Colors.green),
-                    ),
-                  ),
+                CustomTextField(
+                  labelText: 'Email',
+                  hintText: 'Enter your Email',
+                  suffixIcon: Icons.email,
+                  obscureText: false,
                 ),
                 SizedBox(height: height * 0.04),
-                TextFormField(
-                  onTapOutside: (event) {
-                    FocusScope.of(context).unfocus();
-                  },
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(
-                      horizontal: width * 0.01,
-                      vertical: height * 0.02,
-                    ),
-                    labelText: 'Password',
-                    labelStyle: TextStyle(color: Colors.green),
-                    suffixIcon: Icon(Icons.visibility),
-                    hintText: 'Enter your password',
-                    border: OutlineInputBorder(borderRadius: borderRadius),
-                  ),
+                CustomTextField(
+                  labelText: 'Password',
+                  hintText: 'Enter your password',
+                  suffixIcon: Icons.visibility,
+                  obscureText: true,
+                  isPassword: true,
+                  helperText: 'Password must be at least 6 characters',
                 ),
+
                 SizedBox(height: height * 0.04),
                 ElevatedButton(
                   onPressed: () {},
